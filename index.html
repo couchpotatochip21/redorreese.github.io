@@ -10,6 +10,7 @@
     <p id="test">Hello</p>
     <script>
       function doSomething(){
+        document.getElementById("test").innerHTML = "null2";
         if (isred == 0) {
           document.getElementById("test").innerHTML = "reese";
         }
@@ -22,6 +23,7 @@
         
       }
       function playagain(){
+        document.getElementById("test").innerHTML = "null3";
         0 = Math.ceil(min);
         1 = Math.floor(max);
         isred = Math.floor(Math.random() * (max - min) + min); 
