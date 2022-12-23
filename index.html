@@ -12,7 +12,7 @@
     position: sticky;
     top: 50%;
     left: 50%;
-    -ms-transform: translate(-50%, -50%);
+    
     }
 
     h3 {text-align: center;}
@@ -41,6 +41,7 @@
       button2.addEventListener('click', doSomething);
       var isred = 0;
       var iswrong = false;
+      var ingame = false;
       function doSomething(){
         document.getElementById("test").textContent = "null2";
         
@@ -48,6 +49,8 @@
           console.log("reese");
           reeseaudio.play();
           document.getElementById("test").textContent = "who is it?";
+          reesebutton.removeEventListener('click', correct);
+          redbutton.removeEventListener('click', wrong);
           reesebutton.addEventListener('click', correct);
           redbutton.addEventListener('click', wrong);
         }
@@ -55,6 +58,8 @@
           console.log("red");
           redaudio.play();
           document.getElementById("test").textContent = "who is it?";
+          reesebutton.removeEventListener('click', correct);
+          redbutton.removeEventListener('click', wrong);
           redbutton.addEventListener('click', correct);
           reesebutton.addEventListener('click', wrong);
         }
@@ -64,11 +69,14 @@
         
       }
       function playagain(){
-        document.getElementById("test").textContent = "Click 'Play Audio'";
-        isred = getRandomInt(2); 
-        document.body.style.background = 'white';
-        reesebutton.disabled = false;
-        redbutton.disabled = false;
+        if (ingame === false){
+          document.getElementById("test").textContent = "Click 'Play Audio'";
+          isred = getRandomInt(2); 
+          document.body.style.background = 'white';
+          reesebutton.disabled = false;
+          redbutton.disabled = false;
+          ingame = true;
+        }
       }
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -79,6 +87,7 @@
         isred = 0;
         reesebutton.disabled = true;
         redbutton.disabled = true;
+        ingame = false;
       }
       function correct() {
         document.body.style.background = 'green';
@@ -86,6 +95,7 @@
         isred = 0;
         reesebutton.disabled = true;
         redbutton.disabled = true;
+        ingame = false;
       }
     </script>
   </body>
